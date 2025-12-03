@@ -17,23 +17,32 @@ btn.addEventListener("click", (e)=>{
    boxes = prompt("Enter a number between 1 and 100")
    totalSquares = boxes * boxes;
    dimensions = 100/boxes
-   console.log(`num entered = ${boxes} total squares = ${totalSquares} - dimensions = ${dimensions}`)
-   document.querySelectorAll("box").
+   dimensions = `${dimensions}%`
+   console.log(`num entered = ${boxes} total squares = ${totalSquares} - dimensions = ${dimensions}`)   
+   removeboxes()
+   createdBoxes()
 })
 
-
+//need to remove boxes before drawing the new grid
+function removeboxes(){
+    while (Container.firstChild) {
+        Container.removeChild(Container.firstChild)
+    }
+}
 
 function createdBoxes(){
-    for (let index = 0; index < boxes; index++) {
+    for (let index = 0; index < totalSquares; index++) {
         const div = document.createElement("div")
         div.classList.add("box")
         div.setAttribute("id", index)
+        div.style.width = dimensions
+        div.style.height =dimensions
         div.style.backgroundColor = dc
         div.addEventListener("mouseover",(e)=>{
             div.style.backgroundColor = hc
         })
         // div.addEventListener("mouseout",(e)=>{
-        //     div.style.backgroundColor = hc
+        //     div.style.backgroundColor = dc
         // })
         Container.appendChild(div) 
     }
