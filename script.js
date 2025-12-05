@@ -15,12 +15,17 @@ let dimensions = 100
 
 btn.addEventListener("click", (e)=>{
    boxes = prompt("Enter a number between 1 and 100")
-   totalSquares = boxes * boxes;
-   dimensions = 100/boxes
-   dimensions = `${dimensions}%`
-   console.log(`num entered = ${boxes} total squares = ${totalSquares} - dimensions = ${dimensions}`)   
-   removeboxes()
-   createdBoxes()
+   if (boxes<1||boxes>100){
+        alert("number should be between 1 and 100")
+    }
+    else{
+        totalSquares = boxes * boxes;
+        dimensions = 100/boxes
+        dimensions = `${dimensions}%`
+        console.log(`num entered = ${boxes} total squares = ${totalSquares} - dimensions = ${dimensions}`)   
+        removeboxes()
+        createdBoxes()
+    }
 })
 
 //need to remove boxes before drawing the new grid
